@@ -26,7 +26,7 @@
  * Math class: https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_math.htm
  * Classes: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_understanding.htm
  *
- * @author Your Name
+ * @author Stephanie Burgos
  */
 
 public with sharing class ClassesObjectsMethods {
@@ -40,17 +40,24 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<String> practiceStringMethods() {
         // Initialize a String with 'Hello, Salesforce!'
-        
-        // Get the length of the String        
+        String helloString = 'Hello, Salesforce!';    
+        // Get the length of the String
+        String stringLength = String.valueOf(helloString.length());      
         // Get a substring of the String of the first 5 characters
+        String substringOfString = helloString.substring(0, 5);
         // Convert the String to lower case
+        String lowerCaseString = helloString.toLowerCase();
         
         // Return the list with the string data
+        List<String> listOfStrings = new List<String>();
         // In the first position add the string length
+        listOfStrings.add(stringLength);
         // In the second position add the substring
+        listOfStrings.add(substringOfString);
         // In the third position add the string in lower case
+        listOfStrings.add(lowerCaseString);
 
-        return null; // Replace null with the variable you used to store the result
+        return listOfStrings; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -62,14 +69,14 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Boolean> checkStringContent(String input) {
         // Initialize a list to store the results
-        
+        List<Boolean> contentList = new List<Boolean>();
         // Check if the string starts with 'Sales'
-        
+        contentList.add((input.startsWith('Sales')));
         // Check if the string ends with 'Force'
-        
+        contentList.add(input.endsWith('Force'));
         // Check if the string contains 'Awesome'
-        
-        return null; // Replace null with the variable you used to store the result
+        contentList.add(input.contains('Awesome'));
+        return contentList; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -81,15 +88,17 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String removeDuplicateWords(String sentence) {
         // Split the sentence into words
-
+        List<String> listOfWords = new List<String>(sentence.split(' '));
         // Create a set to store the unique words
-
+        Set<String> uniqueSetOfWords = new Set<String>(listOfWords);
         // Add each word to the set
-
         // Join the unique words back into a sentence
-
+        String uniqueSentence = '';
+        for (String word : uniqueSetOfWords) {
+            uniqueSentence += word + ' ';
+        }
         // Return the sentence with unique words
-        return null; // Replace null with the variable you used to store the result
+        return uniqueSentence.trim(); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -102,16 +111,18 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer countVowels(String str) {
         // Initialize the result Integer
+        Integer numOfVowels = 0;
 
-        /*
-        for () {
+        for (Integer i = 0; i < str.length(); i++) {
             // get individual characters from the string - hint use substring or split
             // check if the character is a vowel
+            Boolean isVowel = (str.substring(i, i+1) == 'a' || str.substring(i, i+1) == 'e' || str.substring(i, i+1) == 'i' || str.substring(i, i+1) == 'o' || str.substring(i, i+1) == 'u');
             // if it is a vowel, increment the result Integer
+            if (isVowel) {
+                numOfVowels++;
+            }   
         }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        return numOfVowels; // Replace null with the variable you used to store the result
     }
 
     /**

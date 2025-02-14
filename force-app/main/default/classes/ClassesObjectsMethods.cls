@@ -137,16 +137,17 @@ public with sharing class ClassesObjectsMethods {
         List<String> scientistNames = new List<String>{'Tim Berners-Lee', 'Alan Turing', 'Grace Hopper', 'Donald Knuth', 'Guido van Rossum', 'Ken Thompson', 'Stephen Hawking'};
 
         // The variable to store the concatenated string
-
+        String concatNames = '';
         // Loop through the list of scientists' names
-
+        for (String name : scientistNames) {
             // If the name doesn't contain the letter 'G', skip this iteration
-
-            // Add the name to the result string, followed by a comma
-
-        // Remove the last comma from the result string
-
-        return null; // Replace null with the variable you used to store the result
+            if (name.toLowerCase().contains('g')) {
+                // Add the name to the result string, followed by a comma
+                concatNames += name + ',';
+            }
+        }// Remove the last comma from the result string
+        concatNames = concatNames.removeEnd(',');
+        return concatNames; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -159,11 +160,12 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Double calculateDifferenceOfSquares(Double a, Double b) {
         // Square the input numbers using the Math.pow() function
-
+        a = Math.pow(a, 2);
+        b = Math.pow(b, 2);
         // Calculate the absolute difference using Math.abs() function
-
+        Double absDiff = Math.abs(a -b);
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return absDiff; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -174,9 +176,8 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer generateRandomNumber() {
         // Use Math class to generate number between 50 and 100
-
         // Return the random integer
-        return null; // Replace null with the variable you used to store the result
+        return (Integer)(Math.random() * (100 - 50 + 1)) + 50; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -187,11 +188,10 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String getCurrentDate() {
         // Get the todays date
-
         // Format the current date
-
+        // String formattedDate = todayDate.format();
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return Date.today().format(); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -203,13 +203,12 @@ public with sharing class ClassesObjectsMethods {
     public static String getDayOfWeek(DateTime dt) {
         // Define a map of day of the week as a key and day number as the value
         // Monday = 1, Tuesday = 2, etc.
-
+        Map<String,Integer> daysOfWeek = new Map<String,Integer>{'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6, 'Sunday' => 7};
         // Get the day name using .format('EEEE');
-
+        String dayOfWeek = dt.format('EEEE');
         // Get the day number from the map using the day name
-
         // Return the result as a string
-        return null; // Replace null with the variable you used to store the result
+        return String.valueOf(daysOfWeek.get(dayOfWeek)); // Replace null with the variable you used to store the result
     }
 
 
@@ -223,10 +222,8 @@ public with sharing class ClassesObjectsMethods {
      * @return The a positive number years between the two dates, or null if either date is null.
      */
     public static Integer calculateYearDifference(Date d1, Date d2) {
-
         // Subtract the difference in years
-
-        return null; // Replace null with the variable you used to store the result
+        return (d1 == null || d2 == null) ? null : Math.abs(d1.year() - Math.abs(d2.year())); // Replace null with the variable you used to store the result
     }
 
     /**

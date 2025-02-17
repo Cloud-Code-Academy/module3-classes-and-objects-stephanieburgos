@@ -49,14 +49,7 @@ public with sharing class ClassesObjectsMethods {
         String lowerCaseString = helloString.toLowerCase();
         
         // Return the list with the string data
-        List<String> listOfStrings = new List<String>();
-        // In the first position add the string length
-        listOfStrings.add(stringLength);
-        // In the second position add the substring
-        listOfStrings.add(substringOfString);
-        // In the third position add the string in lower case
-        listOfStrings.add(lowerCaseString);
-
+        List<String> listOfStrings = new List<String>{stringLength, substringOfString, lowerCaseString};
         return listOfStrings; // Replace null with the variable you used to store the result
     }
 
@@ -116,7 +109,13 @@ public with sharing class ClassesObjectsMethods {
         for (Integer i = 0; i < str.length(); i++) {
             // get individual characters from the string - hint use substring or split
             // check if the character is a vowel
-            Boolean isVowel = (str.substring(i, i+1) == 'a' || str.substring(i, i+1) == 'e' || str.substring(i, i+1) == 'i' || str.substring(i, i+1) == 'o' || str.substring(i, i+1) == 'u');
+            Boolean isVowel = (
+                str.substring(i, i+1) == 'a' || 
+                str.substring(i, i+1) == 'e' || 
+                str.substring(i, i+1) == 'i' || 
+                str.substring(i, i+1) == 'o' || 
+                str.substring(i, i+1) == 'u'
+            );
             // if it is a vowel, increment the result Integer
             if (isVowel) {
                 numOfVowels++;
@@ -134,7 +133,15 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String findTheScientist() {
         // The list of scientists' names
-        List<String> scientistNames = new List<String>{'Tim Berners-Lee', 'Alan Turing', 'Grace Hopper', 'Donald Knuth', 'Guido van Rossum', 'Ken Thompson', 'Stephen Hawking'};
+        List<String> scientistNames = new List<String>{
+            'Tim Berners-Lee', 
+            'Alan Turing', 
+            'Grace Hopper', 
+            'Donald Knuth', 
+            'Guido van Rossum', 
+            'Ken Thompson', 
+            'Stephen Hawking'
+        };
 
         // The variable to store the concatenated string
         String concatNames = '';
@@ -202,7 +209,15 @@ public with sharing class ClassesObjectsMethods {
     public static String getDayOfWeek(DateTime dt) {
         // Define a map of day of the week as a key and day number as the value
         // Monday = 1, Tuesday = 2, etc.
-        Map<String,Integer> daysOfWeek = new Map<String,Integer>{'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6, 'Sunday' => 7};
+        Map<String,Integer> daysOfWeek = new Map<String,Integer>{
+            'Monday' => 1, 
+            'Tuesday' => 2, 
+            'Wednesday' => 3, 
+            'Thursday' => 4, 
+            'Friday' => 5, 
+            'Saturday' => 6, 
+            'Sunday' => 7
+        };
         // Get the day name using .format('EEEE');
         String dayOfWeek = dt.format('EEEE');
         // Get the day number from the map using the day name

@@ -306,20 +306,36 @@ public with sharing class ClassesObjectsMethods {
      */
     public class Person {
         // Declare private two instance variables - (TEXT) name and (Number) age
-        
+        String name;
+        Integer age;
         // Constructor to initialize the name and age
-    
-        // Method introduceYourself that returns the details of the person        
+        public Person(String personName, Integer personAge) {
+            this.name = personName;
+            this.age = personAge;
+        }
+        // Method introduceYourself that returns the details of the person 
+        public String introduceYourself() {
+            return 'Hello, my name is ' + name + ' and I am ' + age + ' years old.';
+        }       
         // Return a string in the format "Hello, my name is <name> and I am <age> years old."
         // For example, introduceYourself() should return a string like "Hello, my name is John Doe and I am 28 years old."
-
+    
         // Getter method that returns the name of the person
-
+        public String getName() { 
+            return name; 
+        }
         // Getter method that returns the age of the person
-
+        public Integer getAge() { 
+            return age; 
+        }
         // Setter method that sets the name of the person
-
+        public void setName(String newName) {
+            name = newName;
+        }
         // Setter method that sets the age of the person
+        public void setAge(Integer newAge) {
+            age = newAge;
+        }
     }
 
     /**
@@ -329,18 +345,21 @@ public with sharing class ClassesObjectsMethods {
      * @return A string containing the details of the person.
      */
 
-    public static List<String> personDetails() {
+     public static List<String> personDetails() {
         List<String> results = new List<String>();
         // Create a new instance of Person class
+        Person person1 = new Person('Bob', 21);
         // Name the person 'John Doe' and set the age to 28
-
+        person1.setName('John Doe');
+        person1.setAge(28);
+    
         // Add the details of the person using the introduceYourself method
-
+        results.add(person1.introduceYourself());
         // Get the name of the person using the getter method and add it to the list
-
+        results.add(person1.getName());
         // Get the age of the person using the getter method and add it to the list
-        
-        return null; // Replace null with the variable you used to store the result
+        results.add(String.valueOf(person1.getAge()));
+        return results; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -352,9 +371,9 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Person createPerson(String name, Integer age) {
         // Create a new instance of the Person class using the provided name and age
-        
+        Person person2 = new Person(name, age);
         // Return the new instance of the Person class
-        return null; // Replace null with the variable you used to store the result
+        return person2; // Replace null with the variable you used to store the result
     }
 
     /**

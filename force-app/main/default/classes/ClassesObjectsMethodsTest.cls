@@ -237,7 +237,6 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(256, result[1].pages, 'Pages of book at index 1 should match');
     }
 
-    /* //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testPersonClass() {
         // Initialize a new Person instance
@@ -263,7 +262,6 @@ public with sharing class ClassesObjectsMethodsTest {
         intro = testPerson.introduceYourself();
         Assert.areEqual('Hello, my name is Jane Doe and I am 30 years old.', intro, 'The updated introduction should be correctly formatted');
     }
-    */
 
     @IsTest
     static void testPersonDetails() {
@@ -288,7 +286,6 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(expectedAge, resultDetails.get(2), 'The third element should be the expected age');
     }
 
-    /* UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testCreatePerson() {
         // Define the name and age to use for testing
@@ -302,7 +299,6 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(testName, resultPerson.getName(), 'The person\'s name should match the test name');
         Assert.areEqual(testAge, resultPerson.getAge(), 'The person\'s age should match the test age');
     }
-    */
 
     /* UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest

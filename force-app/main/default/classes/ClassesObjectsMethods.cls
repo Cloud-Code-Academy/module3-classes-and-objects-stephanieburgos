@@ -49,8 +49,8 @@ public with sharing class ClassesObjectsMethods {
         String lowerCaseString = helloString.toLowerCase();
         
         // Return the list with the string data
-        List<String> listOfStrings = new List<String>{stringLength, substringOfString, lowerCaseString};
-        return listOfStrings; // Replace null with the variable you used to store the result
+        
+        return new List<String>{stringLength, substringOfString, lowerCaseString}; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -62,13 +62,14 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Boolean> checkStringContent(String input) {
         // Initialize a list to store the results
-        List<Boolean> contentList = new List<Boolean>();
+        List<Boolean> contentList = new List<Boolean>{
+            input.startsWith('Sales'),
+            input.endsWith('Force'),
+            input.contains('Awesome')
+        };
         // Check if the string starts with 'Sales'
-        contentList.add((input.startsWith('Sales')));
         // Check if the string ends with 'Force'
-        contentList.add(input.endsWith('Force'));
         // Check if the string contains 'Awesome'
-        contentList.add(input.contains('Awesome'));
         return contentList; // Replace null with the variable you used to store the result
     }
 
@@ -167,11 +168,11 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Double calculateDifferenceOfSquares(Double a, Double b) {
         // Square the input numbers using the Math.pow() function
-        a = Math.pow(a, 2);
-        b = Math.pow(b, 2);
+        Double squareA = Math.pow(a, 2);
+        Double squareB = Math.pow(b, 2);
         // Calculate the absolute difference using Math.abs() function
         // Return the result
-        return Math.abs(a -b); // Replace null with the variable you used to store the result
+        return Math.abs(squareA - squareB); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -183,7 +184,7 @@ public with sharing class ClassesObjectsMethods {
     public static Integer generateRandomNumber() {
         // Use Math class to generate number between 50 and 100
         // Return the random integer
-        return (Integer)(Math.random() * (100 - 50 + 1)) + 50; // Replace null with the variable you used to store the result
+        return (Integer)Math.random() * 50 + 50; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -257,13 +258,12 @@ public with sharing class ClassesObjectsMethods {
         public Book(String title, String author) {
             this.title = title;
             this.author = author;
-            this.pages = pages;
         }
     
         // Method that returns the details of the book
         public String getBookDetails() {
             // return A string containing the details of the book in the format "Title: <title>, Author: <author>"
-            return 'Title: ' + title + ', Author: ' + author; // Replace null with the variable you used to store the result
+            return 'Title: ' + this.title + ', Author: ' + this.author; // Replace null with the variable you used to store the result
         }
     }
     
@@ -294,19 +294,20 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Book> generateBookList(Book myBook1) {
         // Create a list of books
-        List<Book> bookList = new List<Book>{myBook1};
+        List<Book> bookList = new List<Book>();
         // Update the title and author of myBook1
         myBook1.title = 'Harry Potter and the Chamber of Secrets';
         myBook1.author = 'J.K. Rowling';
         // Update the pages for myBook1 to 352
         myBook1.pages = 352;
-    
+        
         // Create a new Book object with title "A Brief History of Time" and author "Stephen Hawking"
         Book myBook2 = new Book('A Brief History of Time', 'Stephen Hawking');
         // Update the pages for A Brief History of Time to 256
         myBook2.pages = 256;
     
         // Add the book to the list
+        bookList.add(myBook1);
         bookList.add(myBook2);
         return bookList; // Replace null with the variable you used to store the result      
     }
@@ -321,8 +322,8 @@ public with sharing class ClassesObjectsMethods {
      */
     public class Person {
         // Declare private two instance variables - (TEXT) name and (Number) age
-        String name;
-        Integer age;
+        private String name;
+        private Integer age;
         // Constructor to initialize the name and age
         public Person(String personName, Integer personAge) {
             this.name = personName;
@@ -330,26 +331,26 @@ public with sharing class ClassesObjectsMethods {
         }
         // Method introduceYourself that returns the details of the person 
         public String introduceYourself() {
-            return 'Hello, my name is ' + name + ' and I am ' + age + ' years old.';
+            return 'Hello, my name is ' + this.name + ' and I am ' + this.age + ' years old.';
         }       
         // Return a string in the format "Hello, my name is <name> and I am <age> years old."
         // For example, introduceYourself() should return a string like "Hello, my name is John Doe and I am 28 years old."
     
         // Getter method that returns the name of the person
         public String getName() { 
-            return name; 
+            return this.name; 
         }
         // Getter method that returns the age of the person
         public Integer getAge() { 
-            return age; 
+            return this.age; 
         }
         // Setter method that sets the name of the person
         public void setName(String newName) {
-            name = newName;
+            this.name = newName;
         }
         // Setter method that sets the age of the person
         public void setAge(Integer newAge) {
-            age = newAge;
+            this.age = newAge;
         }
     }
 
@@ -363,11 +364,9 @@ public with sharing class ClassesObjectsMethods {
      public static List<String> personDetails() {
         List<String> results = new List<String>();
         // Create a new instance of Person class
-        Person person1 = new Person('Bob', 21);
+        Person person1 = new Person('John Doe', 28);
         // Name the person 'John Doe' and set the age to 28
-        person1.setName('John Doe');
-        person1.setAge(28);
-    
+
         // Add the details of the person using the introduceYourself method
         results.add(person1.introduceYourself());
         // Get the name of the person using the getter method and add it to the list
@@ -427,6 +426,6 @@ public with sharing class ClassesObjectsMethods {
     public static Person getOlderPerson(Person person1, Person person2) {
         Integer person1Age = person1.getAge();
         Integer person2Age = person2.getAge();
-        return person1Age == person2Age || person1Age > person2Age ? person1 : person2;
+        return person1Age >= person2Age ? person1 : person2;
     }
 }
